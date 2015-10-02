@@ -9,7 +9,6 @@ import (
 
 	"github.com/Sirupsen/logrus"
 	"github.com/codegangsta/cli"
-	"github.com/contiv/deploy/hooks"
 	"github.com/docker/libcompose/project"
 )
 
@@ -39,8 +38,7 @@ func WithProject(factory ProjectFactory, action ProjectAction) func(context *cli
 		if err != nil {
 			log.Fatalf("Failed to read project: %v", err)
 		}
-		logrus.Infof("==================================>\n Project %#v  Context %#v Action %#v", p, context, action)
-		hooks.NetHooks(p, project.EventProjectUpStart)
+		plugin(p, context)
 		action(p, context)
 	}
 }
