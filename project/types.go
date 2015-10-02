@@ -160,49 +160,50 @@ type Info []InfoPart
 
 // ServiceConfig holds libcompose service configuration
 type ServiceConfig struct {
-	Build         string            `yaml:"build,omitempty"`
-	CapAdd        []string          `yaml:"cap_add,omitempty"`
-	CapDrop       []string          `yaml:"cap_drop,omitempty"`
-	CPUSet        string            `yaml:"cpuset,omitempty"`
-	CPUShares     int64             `yaml:"cpu_shares,omitempty"`
-	Command       Command           `yaml:"command"` // omitempty breaks serialization!
-	ContainerName string            `yaml:"container_name,omitempty"`
-	Devices       []string          `yaml:"devices,omitempty"`
-	DNS           Stringorslice     `yaml:"dns"`        // omitempty breaks serialization!
-	DNSSearch     Stringorslice     `yaml:"dns_search"` // omitempty breaks serialization!
-	Dockerfile    string            `yaml:"dockerfile,omitempty"`
-	DomainName    string            `yaml:"domainname,omitempty"`
-	Entrypoint    Command           `yaml:"entrypoint"`  // omitempty breaks serialization!
-	EnvFile       Stringorslice     `yaml:"env_file"`    // omitempty breaks serialization!
-	Environment   MaporEqualSlice   `yaml:"environment"` // omitempty breaks serialization!
-	Hostname      string            `yaml:"hostname,omitempty"`
-	Image         string            `yaml:"image,omitempty"`
-	Labels        SliceorMap        `yaml:"labels"` // omitempty breaks serialization!
-	Links         MaporColonSlice   `yaml:"links"`  // omitempty breaks serialization!
-	LogDriver     string            `yaml:"log_driver,omitempty"`
-	MemLimit      int64             `yaml:"mem_limit,omitempty"`
-	MemSwapLimit  int64             `yaml:"memswap_limit,omitempty"`
-	Name          string            `yaml:"name,omitempty"`
-	Net           string            `yaml:"net,omitempty"`
-	Pid           string            `yaml:"pid,omitempty"`
-	Uts           string            `yaml:"uts,omitempty"`
-	Ipc           string            `yaml:"ipc,omitempty"`
-	Ports         []string          `yaml:"ports,omitempty"`
-	Privileged    bool              `yaml:"privileged,omitempty"`
-	Restart       string            `yaml:"restart,omitempty"`
-	ReadOnly      bool              `yaml:"read_only,omitempty"`
-	StdinOpen     bool              `yaml:"stdin_open,omitempty"`
-	SecurityOpt   []string          `yaml:"security_opt,omitempty"`
-	Tty           bool              `yaml:"tty,omitempty"`
-	User          string            `yaml:"user,omitempty"`
-	VolumeDriver  string            `yaml:"volume_driver,omitempty"`
-	Volumes       []string          `yaml:"volumes,omitempty"`
-	VolumesFrom   []string          `yaml:"volumes_from,omitempty"`
-	WorkingDir    string            `yaml:"working_dir,omitempty"`
-	Expose        []string          `yaml:"expose,omitempty"`
-	ExternalLinks []string          `yaml:"external_links,omitempty"`
-	LogOpt        map[string]string `yaml:"log_opt,omitempty"`
-	ExtraHosts    []string          `yaml:"extra_hosts,omitempty"`
+	Build          string            `yaml:"build,omitempty"`
+	CapAdd         []string          `yaml:"cap_add,omitempty"`
+	CapDrop        []string          `yaml:"cap_drop,omitempty"`
+	CPUSet         string            `yaml:"cpuset,omitempty"`
+	CPUShares      int64             `yaml:"cpu_shares,omitempty"`
+	Command        Command           `yaml:"command"` // omitempty breaks serialization!
+	ContainerName  string            `yaml:"container_name,omitempty"`
+	Devices        []string          `yaml:"devices,omitempty"`
+	DNS            Stringorslice     `yaml:"dns"`        // omitempty breaks serialization!
+	DNSSearch      Stringorslice     `yaml:"dns_search"` // omitempty breaks serialization!
+	Dockerfile     string            `yaml:"dockerfile,omitempty"`
+	DomainName     string            `yaml:"domainname,omitempty"`
+	Entrypoint     Command           `yaml:"entrypoint"`  // omitempty breaks serialization!
+	EnvFile        Stringorslice     `yaml:"env_file"`    // omitempty breaks serialization!
+	Environment    MaporEqualSlice   `yaml:"environment"` // omitempty breaks serialization!
+	Hostname       string            `yaml:"hostname,omitempty"`
+	Image          string            `yaml:"image,omitempty"`
+	Labels         SliceorMap        `yaml:"labels"` // omitempty breaks serialization!
+	Links          MaporColonSlice   `yaml:"links"`  // omitempty breaks serialization!
+	LogDriver      string            `yaml:"log_driver,omitempty"`
+	MemLimit       int64             `yaml:"mem_limit,omitempty"`
+	MemSwapLimit   int64             `yaml:"memswap_limit,omitempty"`
+	Name           string            `yaml:"name,omitempty"`
+	Net            string            `yaml:"net,omitempty"`
+	Pid            string            `yaml:"pid,omitempty"`
+	PublishService string            `yaml:"publish_service,omitempty"`
+	Uts            string            `yaml:"uts,omitempty"`
+	Ipc            string            `yaml:"ipc,omitempty"`
+	Ports          []string          `yaml:"ports,omitempty"`
+	Privileged     bool              `yaml:"privileged,omitempty"`
+	Restart        string            `yaml:"restart,omitempty"`
+	ReadOnly       bool              `yaml:"read_only,omitempty"`
+	StdinOpen      bool              `yaml:"stdin_open,omitempty"`
+	SecurityOpt    []string          `yaml:"security_opt,omitempty"`
+	Tty            bool              `yaml:"tty,omitempty"`
+	User           string            `yaml:"user,omitempty"`
+	VolumeDriver   string            `yaml:"volume_driver,omitempty"`
+	Volumes        []string          `yaml:"volumes,omitempty"`
+	VolumesFrom    []string          `yaml:"volumes_from,omitempty"`
+	WorkingDir     string            `yaml:"working_dir,omitempty"`
+	Expose         []string          `yaml:"expose,omitempty"`
+	ExternalLinks  []string          `yaml:"external_links,omitempty"`
+	LogOpt         map[string]string `yaml:"log_opt,omitempty"`
+	ExtraHosts     []string          `yaml:"extra_hosts,omitempty"`
 }
 
 // EnvironmentLookup defines methods to provides environment variable loading.

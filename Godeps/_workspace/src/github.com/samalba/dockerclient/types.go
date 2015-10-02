@@ -16,6 +16,7 @@ type ContainerConfig struct {
 	AttachStdout    bool
 	AttachStderr    bool
 	ExposedPorts    map[string]struct{}
+	PublishService  string
 	Tty             bool
 	OpenStdin       bool
 	StdinOnce       bool

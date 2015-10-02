@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     --no-install-recommends
 
 # Install build dependencies
+ENV https_proxy https://proxy.esl.cisco.com:8080
 RUN go get github.com/mitchellh/gox
 RUN go get github.com/aktau/github-release
 RUN go get github.com/tools/godep
