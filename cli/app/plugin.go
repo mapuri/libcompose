@@ -10,7 +10,7 @@ import (
 )
 
 func plugin(p *project.Project, context *cli.Context) error {
-	logrus.Infof("VJ =====> Project %#v  Context %#v", p, context)
+	logrus.Debugf("=====> Project %#v  Context %#v", p, context)
 	cliLabels := ""
 	event := project.NoEvent
 	switch context.Command.Name {

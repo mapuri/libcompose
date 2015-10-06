@@ -17,15 +17,15 @@
 		},
 		{
 			"ImportPath": "github.com/contiv/deploy/hooks",
-			"Rev": "b5fd5868df71c7083468b8b05f15094a612d81d1"
+			"Rev": "9561f7f4314de22aacdc99578b7debf512b5b622"
 		},
 		{
 			"ImportPath": "github.com/contiv/deploy/labels",
-			"Rev": "b5fd5868df71c7083468b8b05f15094a612d81d1"
+			"Rev": "9561f7f4314de22aacdc99578b7debf512b5b622"
 		},
 		{
 			"ImportPath": "github.com/contiv/deploy/nethooks",
-			"Rev": "b5fd5868df71c7083468b8b05f15094a612d81d1"
+			"Rev": "9561f7f4314de22aacdc99578b7debf512b5b622"
 		},
 		{
 			"ImportPath": "github.com/contiv/go-etcd/etcd",
