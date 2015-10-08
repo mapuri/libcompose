@@ -1,8 +1,6 @@
 package app
 
 import (
-	"log"
-
 	"github.com/Sirupsen/logrus"
 	"github.com/codegangsta/cli"
 	"github.com/contiv/deploy/hooks"
@@ -10,27 +8,14 @@ import (
 )
 
 func plugin(p *project.Project, context *cli.Context) error {
-	logrus.Debugf("=====> Project %#v  Context %#v", p, context)
 	cliLabels := ""
 	event := project.NoEvent
 	switch context.Command.Name {
-	case "up":
+	case "up", "start":
 		event = project.EventProjectUpStart
-	case "start":
-		event = project.EventProjectUpStart
-	case "down":
+	case "down", "delete", "kill", "rm", "stop":
 		event = project.EventProjectDownStart
-	case "delete":
-		event = project.EventProjectDownStart
-	case "kill":
-		event = project.EventProjectDownStart
-	case "create":
-	case "build":
-	case "ps":
-	case "port":
-	case "pull":
-	case "log":
-	case "restart":
+	case "create", "build", "ps", "port", "pull", "log", "restart":
 	}
 
 	if event == project.NoEvent {
@@ -39,12 +24,12 @@ func plugin(p *project.Project, context *cli.Context) error {
 
 	if event == project.EventProjectUpStart && cliLabels != "" {
 		if err := hooks.PopulateEnvLabels(p, cliLabels); err != nil {
-			log.Fatalf("Unable to insert environment labels. Error %v", err)
+			logrus.Fatalf("Unable to insert environment labels. Error %v", err)
 		}
 	}
 
 	if err := hooks.NetHooks(p, event); err != nil {
-		log.Fatalf("Unable to generate network labels. Error %v", err)
+		logrus.Fatalf("Unable to generate network labels. Error %v", err)
 	}
 
 	return nil
