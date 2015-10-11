@@ -38,8 +38,9 @@ func WithProject(factory ProjectFactory, action ProjectAction) func(context *cli
 		if err != nil {
 			log.Fatalf("Failed to read project: %v", err)
 		}
-		plugin(p, context)
+		pre_plugin(p, context)
 		action(p, context)
+		post_plugin(p, context)
 	}
 }
 

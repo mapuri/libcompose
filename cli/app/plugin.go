@@ -7,8 +7,7 @@ import (
 	"github.com/docker/libcompose/project"
 )
 
-func plugin(p *project.Project, context *cli.Context) error {
-	cliLabels := ""
+func getEvent(context *cli.Context) project.EventType {
 	event := project.NoEvent
 	switch context.Command.Name {
 	case "up", "start":
@@ -18,6 +17,12 @@ func plugin(p *project.Project, context *cli.Context) error {
 	case "create", "build", "ps", "port", "pull", "log", "restart":
 	}
 
+	return event
+}
+
+func pre_plugin(p *project.Project, context *cli.Context) error {
+	cliLabels := ""
+	event := getEvent(context)
 	if event == project.NoEvent {
 		return nil
 	}
@@ -32,5 +37,18 @@ func plugin(p *project.Project, context *cli.Context) error {
 		logrus.Fatalf("Unable to generate network labels. Error %v", err)
 	}
 
+	return nil
+}
+
+func post_plugin(p *project.Project, context *cli.Context) error {
+	event := getEvent(context)
+
+	if event != project.EventProjectUpStart {
+		return nil
+	}
+
+	if err := hooks.PopulateDNS(p, event); err != nil {
+		logrus.Fatalf("Unable to populate dns entries. Error %v", err)
+	}
 	return nil
 }
