@@ -1,6 +1,11 @@
 # This file describes the standard way to build libcompose, using docker
 FROM golang:1.4.2-cross
 
+ENV    HTTP_PROXY http://proxy.esl.cisco.com:8080
+ENV    HTTPS_PROXY http://proxy.esl.cisco.com:8080
+ENV    http_proxy http://proxy.esl.cisco.com:8080
+ENV    https_proxy http://proxy.esl.cisco.com:8080
+
 RUN apt-get update && apt-get install -y \
     iptables \
     build-essential \
